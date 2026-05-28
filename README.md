@@ -12,130 +12,127 @@
 </div>
 
 ---
+# 📊 Curso de Bases de Datos: De los Fundamentos al Lenguaje SQL
 
-# 📚 Descripción
-
-Este repositorio contiene prácticas, ejercicios, diagramas y actividades desarrolladas durante la materia de **Base de Datos**.
-Aquí se trabajan conceptos fundamentales relacionados con el diseño, modelado y construcción de bases de datos relacionales utilizando SQL.
-
-Porque claramente alguien decidió que organizar datos con tablas, relaciones y llaves foráneas era más divertido que tocar pasto. ☕💀
+¡Bienvenido al repositorio de la materia de Bases de Datos! Este espacio está diseñado para consolidar todos los conocimientos teóricos y prácticos adquiridos a lo largo del curso, abarcando desde la abstracción conceptual de la información hasta la manipulación e implementación de bases de datos relacionales robustas.
 
 ---
 
-# 🧠 Temas vistos
+## 🗺️ Mapa de Ruta del Aprendizaje (Roadmap)
 
-## 🔹 Fundamentos de Bases de Datos
-
-* Concepto de base de datos
-* Sistemas gestores de bases de datos (SGBD)
-* Tipos de bases de datos
-* Ventajas y aplicaciones
-* Integridad y seguridad de datos
+```
+[1. Fundamentos] ──> [2. Modelo E-R] ──> [3. Modelo Relacional] ──> [4. SQL-LDD] ──> [5. SQL-LMD]
+```
 
 ---
 
-## 🔹 Modelado de Datos con Modelo E-R
+## 📚 Contenido del Curso
 
-* Entidades
-* Atributos
-* Relaciones
-* Cardinalidades
-* Diagramas Entidad-Relación
-* Conversión al modelo relacional
+### 1. 🔍 Fundamentos de Bases de Datos
 
----
+Introducción a los conceptos clave para entender cómo y por qué almacenamos datos de forma estructurada.
 
-## 🔹 Modelo Relacional
-
-* Tablas
-* Tuplas y atributos
-* Llaves primarias
-* Llaves foráneas
-* Normalización
-* Integridad referencial
+- Diferencia entre datos e información; evolución de los archivos tradicionales a las Bases de Datos.
+- Arquitectura ANSI-SPARC (tres niveles), componentes y objetivos de un SGBD.
+- Comprensión de los niveles físico, conceptual y de visión.
 
 ---
 
-## 🔹 Construcción de Bases de Datos con SQL
+### 2. 📐 Modelado de Datos: Modelo Entidad-Relación (E-R)
 
-### 📌 Lenguaje SQL - LDD (DDL)
+La fase de diseño conceptual donde transformamos requerimientos del mundo real en diagramas estructurados.
 
-Comandos utilizados para definir estructuras:
+- Entidades fuertes/débiles; atributos clave, compuestos, multivalorados y derivados.
+- Cardinalidad y participación (1:1, 1:N, N:M).
+- Creación de diagramas conceptuales claros para representar la lógica del negocio.
+
+---
+
+### 3. 🔄 El Modelo Relacional
+
+Transición del modelo conceptual (E-R) al modelo lógico apto para sistemas modernos.
+
+- Tablas, tuplas (filas), atributos (columnas) y dominios.
+- Identificación de Claves Primarias (PK) y Claves Foráneas (FK).
+- Proceso de mapeo de entidades y relaciones hacia tablas físicas.
+- Restricciones y acciones en cascada (`ON DELETE` / `ON UPDATE`).
+
+---
+
+### 4. 🔨 Construcción con SQL-LDD (Lenguaje de Definición de Datos)
+
+Implementación física de la estructura de la base de datos utilizando código SQL estándar.
+
+- Sentencias: `CREATE`, `ALTER` y `DROP`.
+- Restricciones: `PRIMARY KEY`, `FOREIGN KEY`, `UNIQUE`, `NOT NULL` y `CHECK`.
 
 ```sql
-CREATE DATABASE escuela;
+-- Ejemplo de creación de tablas (LDD)
+CREATE TABLE alumnos (
+    alumno_id          INT           PRIMARY KEY,
+    matricula          VARCHAR(15)   UNIQUE NOT NULL,
+    nombre             VARCHAR(50)   NOT NULL,
+    fecha_nacimiento   DATE,
+    estado             VARCHAR(10)   DEFAULT 'Activo'
+);
 
-CREATE TABLE alumnos(
-    id INT PRIMARY KEY,
-    nombre VARCHAR(100),
-    edad INT
+CREATE TABLE inscripciones (
+    inscripcion_id   INT        PRIMARY KEY,
+    alumno_id        INT,
+    fecha_registro   TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (alumno_id) REFERENCES alumnos(alumno_id) ON DELETE CASCADE
 );
 ```
 
-### 📌 Lenguaje SQL - LMD (DML)
+---
 
-Comandos utilizados para manipular datos:
+### 5. ⚡ Manipulación con SQL-LMD (Lenguaje de Manipulación de Datos)
+
+Interacción directa con los datos almacenados para consulta y modificación.
+
+- Sentencias: `INSERT`, `SELECT`, `UPDATE` y `DELETE`.
+- Cláusulas: `WHERE`, `ORDER BY`, `GROUP BY` y `HAVING`.
+- Combinación de tablas mediante `INNER JOIN`, `LEFT JOIN` y `RIGHT JOIN`.
 
 ```sql
-INSERT INTO alumnos VALUES(1, 'Juan', 18);
-
-SELECT * FROM alumnos;
-
-UPDATE alumnos
-SET edad = 19
-WHERE id = 1;
+-- Ejemplo de consulta multitable (LMD)
+SELECT
+    a.nombre,
+    i.fecha_registro
+FROM alumnos a
+INNER JOIN inscripciones i ON a.alumno_id = i.alumno_id
+WHERE a.estado = 'Activo'
+ORDER BY i.fecha_registro DESC;
 ```
 
 ---
 
-# 🛠️ Tecnologías utilizadas
+## 📂 Estructura del Repositorio
 
-* MySQL
-* SQL
-* Draw.io / Lucidchart
-* Git & GitHub
-
----
-
-# 📂 Estructura del repositorio
-
-```bash
-📁 Base-De-Datos
- ┣ 📂 Diagramas
- ┣ 📂 Practicas_SQL
- ┣ 📂 Modelo_ER
- ┣ 📂 Consultas
- ┣ 📜 README.md
+```
+├── 📁 01_fundamentos/        # Apuntes teóricos
+├── 📁 02_modelo_er/          # Diagramas y casos de estudio
+├── 📁 03_modelo_relacional/  # Ejercicios de mapeo
+├── 📁 04_sql_ldd/            # Scripts de creación de esquemas (.sql)
+├── 📁 05_sql_lmd/            # Scripts de consultas y manipulación (.sql)
+└── README.md                 # Presentación del curso
 ```
 
 ---
 
-# 🚀 Objetivo del repositorio
+## 🛠️ Tecnologías Sugeridas
 
-Aplicar los conocimientos adquiridos en la materia mediante ejercicios prácticos, diseño de modelos de datos y construcción de bases de datos funcionales utilizando SQL.
-
-Porque descubrir que faltaba una coma después de 40 minutos revisando el código es parte del desarrollo personal del estudiante promedio. 🫠
-
----
-
-# 👨‍💻 Autor
-
-**Zunny**
-Estudiante de desarrollo y bases de datos.
+- [Draw.io](https://app.diagrams.net/) / [Lucidchart](https://www.lucidchart.com/)
+- MySQL / PostgreSQL / SQL Server
+- DBeaver / Azure Data Studio / Workbench
 
 ---
 
-# ⭐ Extras
+## 👤 Autor
 
-Si llegaste hasta aquí:
-
-* hidrátate 💧
-* haz respaldo de tu base de datos 💀
-* nunca uses `DELETE` sin `WHERE`
-
-```sql
-DELETE FROM alumnos;
--- último avistamiento de los datos: hace 3 segundos
-```
+- **[Tu Nombre Aquí]**
+- [Tu Enlace a LinkedIn o Email]
 
 ---
+
+⭐ *Si este repositorio te fue útil, considera dejar una estrella.*

@@ -30,3 +30,36 @@ select * from alumno;
 -- Cambiar el nombre de arcadia a cami (SQL-LMD)
 update alumno set nombre = 'cami'
 where id = 1;
+
+
+
+
+
+
+create DATABASE pruebaatributos;
+
+CREATE TABLE alumno(
+num_alumno int not null PRIMARY KEY,
+nombre VARCHAR(50) not null,
+apellido1 VARCHAR(30) not null,
+apellido2 VARCHAR(30) NULL,
+fecha_naci date not null
+);
+
+
+nsert into alumno
+VALUES(1,'Angel Patricio','Perez','Hernández','1998-07-08');
+
+
+insert into alumno
+VALUES(2,'Ian uriel','Zuñiga',NULL,'2007-07-25');
+
+select * from alumno;
+
+select 
+	nombre,apellido1,apellido2,
+	YEAR(fecha_naci),
+	MONTH(fecha_naci),
+	DAY(fecha_naci),
+	Datediff(year,fecha_naci,getdate()) as edad
+from alumno;
