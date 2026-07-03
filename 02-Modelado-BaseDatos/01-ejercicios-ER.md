@@ -168,3 +168,6 @@ Una empresa está organizada en departamentos para administrar a sus empleados y
 
 ![Escuela](../img/E-R/EJERCICIO5.jpg)
 ----
+# Ejercicio 7
+
+![Escuela](../img/E-R/EJERCICIO7.jpg)
