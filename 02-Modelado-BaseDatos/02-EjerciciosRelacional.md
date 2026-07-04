@@ -16,7 +16,7 @@
 
 ## Modelo Relacional
 
-![Hospital](../img/Relacional/EJERCICIO2.jpg)
+![Hospital](../img/Relacional/EJERCICIO2.jpeg)
 
 # Ejercicio 3
 

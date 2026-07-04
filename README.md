@@ -120,18 +120,10 @@ ORDER BY i.fecha_registro DESC;
 
 ---
 
-## 🛠️ Tecnologías Sugeridas
-
-- [Draw.io](https://app.diagrams.net/) / [Lucidchart](https://www.lucidchart.com/)
-- MySQL / PostgreSQL / SQL Server
-- DBeaver / Azure Data Studio / Workbench
-
----
-
 ## 👤 Autor
 
-- **[Tu Nombre Aquí]**
-- [Tu Enlace a LinkedIn o Email]
+- **Adair Jesús Cruz Huitrón**
+
 
 ---
 
