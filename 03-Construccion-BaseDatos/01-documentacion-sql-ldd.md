@@ -96,3 +96,12 @@ La razón es que funciona de forma concistente en **SQL-Server, MySQL** y especi
 - ck_producto_precio
 - df_cliente_activo
  
+ ## Alter table
+
+Permite modificar una tabla existente
+
+- AGregar columnas
+- Eliminar columnas
+- Modificar columnas
+- Agergar restricciones
+- Eliminar restricciones

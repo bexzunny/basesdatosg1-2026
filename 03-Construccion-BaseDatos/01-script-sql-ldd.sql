@@ -1,3 +1,23 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- Construcción de base de datos con SQL-LDD
 
 -- Crear una base de datos
@@ -478,3 +498,5 @@ WHERE proveedor_id =0;
 
 -- TODO:  Realizar Ejercicio completo de construcción de un diagrama relacional,
 -- Aplicando las restricciones y se continua con ALTER y DROP
+
+-- Alter table
