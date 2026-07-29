@@ -138,6 +138,6 @@ CREATE TABLE detalle_pedido(
 );
 ```
 
-## DIAGRAMA FINl
+## DIAGRAMA FINAL
 
-![Comercializadora](../../img/Construccion/Ejercicio1.png)
+![Comercializadora](../../img/Construccion/Ejercicio8.png)
