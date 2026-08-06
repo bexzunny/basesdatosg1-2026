@@ -129,4 +129,27 @@ FROM productos AS p;
 ======================================== */
 
 
+SELECT
+	e.nombre,
+	e.apellido_paterno,
+	e.salario AS salario_anual,
+	(e.salario *12) AS salario_anual
+FROM empleados AS e;
+GO
+	-- Seleccionar el detalle de las ventas mostrando
+	-- numero de venta, cantidad, precio, descuento
+	-- calcular el importe bruto (cantidad*precio)
+	-- Calcular el importe con descuento (importe bruto * descuento)/100
+	-- Calcular el importe neto, (importe bruto *1 - descuento /100)
 
+SELECT
+	dv.id_detalle_venta AS #venta,
+	dv.cantidad AS cantidad_vendida,
+	dv.precio AS [precio de venta],
+	dv.descuento AS 'descuento de venta',
+
+	(dv.cantidad * dv.precio) AS importe_bruto,
+	((dv.cantidad * dv.precio) /100.0) AS [importe_descuento],
+	(dv.cantidad * dv.precio*(1.0 - dv.descuento / 100.0)) AS importe_neto
+
+FROM detalle_ventas AS dv;
