@@ -424,3 +424,99 @@ WHERE p.id_categoria NOT IN (1,7,12)
 ORDER BY p.id_categoria ASC;
 
 -- TODO: OPerador LIKE
+
+/*
+	Permite buscar patrones dentro de valores de texto
+
+	Sintaxis
+
+	WHERE columna LIKE 'patron';
+
+	Los patrones pueden contener comodines:
+
+	Comodin		Significado
+		%		Cero, uno o varios valores
+		-		Exactamente un caractér
+		[abc]	Un caracter uncluido en una lista
+		[a-f]	Un caracter incluido en un grupo
+		[^abc]  Un caracter no incluido en una lista
+
+*/
+
+-- COMODIN %
+-- El simbolo % representa cualuqier cantidad de caracteres, incluyendo cero caracteres
+
+-- Comienza
+-- WHERE nombre LIKE 'Cliente%'
+-- Valores que comienzan con Cliente
+
+-- Termina
+-- WHERE correo LIKE '%main.com'
+-- Valores que terminan con mail.com
+
+--CONTIENE
+-- WHERE nombre LIKE '%a%'
+-- Valores que contienen el caracter A en cualquier posicion
+
+-- Buscar codigos de productos que comiencen con P001
+
+SELECT
+	p.codigo,
+	p.nombre,
+	p.precio
+FROM productos AS p
+WHERE p.codigo LIKE 'P001%';
+
+SELECT
+	c.id_cliente,
+	c.nombre,
+	c.correo
+FROM clientes AS c
+WHERE c.correo LIKE '%10@gmail.com';
+
+
+-- Mostrar los nombress de los productos que contienen el caracter 1
+SELECT
+	p.codigo,
+	p.nombre,
+	p.precio
+FROM productos AS p
+WHERE p.nombre LIKE '%1%';
+
+--Mostrar los codigos con P000 y exactamente un caracter adicional
+SELECT
+	p.codigo,
+	p.nombre,
+	p.precio
+FROM productos AS p
+WHERE p.codigo LIKE 'P00_';
+
+--Patrones con corchetes
+SELECT
+	p.codigo,
+	p.nombre,
+	p.precio
+FROM productos AS p
+WHERE p.codigo LIKE 'P000[1-5]';
+
+--Patrones con corchetes
+SELECT
+	p.codigo,
+	p.nombre,
+	p.precio
+FROM productos AS p
+WHERE p.codigo LIKE 'P000[^1-5]';
+
+--Buscar un guión bajo literal
+
+-- En LIKE, _ es un comodín
+-- Las ciudades de esta bdd contienen _ por ejemplo:
+-- Ciudad_1_1
+
+-- Para buscar un _ literal mediente corchetes
+
+SELECT
+	c.id_ciudad,
+	c.nombre
+FROM ciudades AS c
+WHERE c.nombre LIKE '%[_]%'; --Signfica: Un caracter de _ en cualquier posición
