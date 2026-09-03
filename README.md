@@ -7,7 +7,7 @@
 <img src="https://img.shields.io/badge/SQL-Structured_Query_Language-blue?style=for-the-badge&logo=mysql">
 <img src="https://img.shields.io/badge/Modelo-E--R-purple?style=for-the-badge">
 <img src="https://img.shields.io/badge/Base_de_Datos-Relacionales-green?style=for-the-badge">
-<img src="https://img.shields.io/badge/Status-En_Desarrollo-orange?style=for-the-badge">
+<img src="https://img.shields.io/badge/Status-Finalizado-orange?style=for-the-badge">
 
 </div>
 
